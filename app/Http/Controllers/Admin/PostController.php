@@ -45,7 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         //validazione dei dati
         $request->validate([
             "title" => "required|string|max:100",
@@ -76,6 +76,11 @@ class PostController extends Controller
 
         $newPost->slug = $slug;
 
+
+
+
+        $newPost->save();
+
         if (isset($data['image'])) {
 
             $path_image = Storage::put("uploads", $data['image']);
@@ -86,7 +91,6 @@ class PostController extends Controller
             $newPost->tags()->sync($data["tags"]);
         }
 
-        $newPost->save();
         //redirect al post
         return redirect()->route("posts.show", $newPost->id);
     }
