@@ -53,6 +53,8 @@ class PostController extends Controller
             "published" => "sometimes|accepted",
             "categoy_id" => "nullable|exists:categories,id",
             "image" => "nullable|mimes:jpg,jpeg,png|max:2048",
+            "tags" => "nullable|exists:tags,id"
+
         ]);
         //creazione post
         $data = $request->all();
@@ -76,16 +78,16 @@ class PostController extends Controller
 
         $newPost->slug = $slug;
 
-
-
-
-        $newPost->save();
-
         if (isset($data['image'])) {
 
             $path_image = Storage::put("uploads", $data['image']);
             $newPost->image = $path_image;
         }
+
+
+        $newPost->save();
+
+
 
         if (isset($data["tags"])) {
             $newPost->tags()->sync($data["tags"]);
@@ -135,6 +137,7 @@ class PostController extends Controller
             "published" => "sometimes|accepted",
             "categoy_id" => "nullable|exists:categories,id",
             "image" => "nullable|mimes:jpg,jpeg,png|max:2048",
+            "tags" => "nullable|exists:tags,id"
         ]);
 
         //aggiorno i dati
