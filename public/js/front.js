@@ -2592,9 +2592,9 @@ var render = function () {
     _vm._v(" "),
     _c(
       "ul",
-      _vm._l(_vm.posts, function (post) {
-        return _c("li", { key: _vm.posts.id }, [
-          _c("h3", [_vm._v(_vm._s(post.title))]),
+      _vm._l(_vm.posts, function (posts) {
+        return _c("li", { key: posts.id }, [
+          _c("h3", [_vm._v(_vm._s(_vm.post.title))]),
         ])
       }),
       0
