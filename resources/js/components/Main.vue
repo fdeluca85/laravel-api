@@ -2,7 +2,7 @@
   <main>
       <h2>Lista Post</h2>
       <ul>
-          <li v-for="posts in posts" :key="posts.id">
+          <li v-for="post in posts" :key="post.id">
                <h3>{{post.title}}</h3>
           </li>
       </ul>
